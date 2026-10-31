@@ -10,25 +10,29 @@ const sort = document.querySelector("#sort");
 let cart = loadCart();
 
 function update() {
-  let list = searchProducts(products, search.value);
-  list = filterByCategory(list, category.value);
-  list = sortProducts(list, sort.value);
-  renderProducts(list);
+  const query = search ? search.value : "";
+  const cat = category ? category.value : "all";
+  const order = sort ? sort.value : "none";
 
-  onAddToCart((id) => {
-    cart = addToCart(cart, id);
-    saveCart(cart);
-    updateCart();
-  });
+  let list = searchProducts(products, query);
+  list = filterByCategory(list, cat);
+  list = sortProducts(list, order);
+  renderProducts(list);
 }
 
 function updateCart() {
   renderCart(cartCount(cart), cartTotal(cart, products));
 }
 
-search.addEventListener("input", () => upadte());
-category.addEventListener("change", () => update());
-sort.addEventListener("change", () => update());
+if (search) search.addEventListener("input", () => update());
+if (category) category.addEventListener("change", () => update());
+if (sort) sort.addEventListener("change", () => update());
+
+onAddToCart((id) => {
+  cart = addToCart(cart, id);
+  saveCart(cart);
+  updateCart();
+});
 
 update();
 updateCart();
