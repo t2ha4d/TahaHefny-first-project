@@ -1,11 +1,18 @@
-// UI rendering, DOM element queries, view updates, and template generation.
+// UI rendering, DOM manipulation, view updates, and template generation.
+import type { CartItem, CartTotals, Product } from "./types";
+
+export interface CartUIElements {
+  readonly badgeEl: HTMLElement | null;
+  readonly listEl: HTMLElement | null;
+  readonly subtotalEl: HTMLElement | null;
+}
 
 /**
  * Generates an HTML card string for a single product object.
- * @param {Object} item - Product item.
- * @returns {string} HTML markup.
  */
-function createProductCardHTML(item) {
+function createProductCardHTML(item: Product): string {
+  const displayColor = item.color !== undefined ? item.color : item.category;
+
   return `
     <article class="apparel-card" data-id="${item.id}">
       <div class="apparel-media-frame">
@@ -19,7 +26,7 @@ function createProductCardHTML(item) {
       </div>
       <div class="apparel-body-info">
         <h3 class="apparel-item-title">${item.name}</h3>
-        <span class="apparel-color-label">${item.color || item.category}</span>
+        <span class="apparel-color-label">${displayColor}</span>
         <div class="apparel-footer-action">
           <span class="apparel-price-val">$${item.price}</span>
           <button type="button" class="apparel-add-btn" data-action="add" data-add-id="${item.id}">
@@ -33,13 +40,16 @@ function createProductCardHTML(item) {
 
 /**
  * Renders products into the specified container element.
- * @param {HTMLElement} container - Grid container.
- * @param {Array} list - Array of products to render.
  */
-export function renderProducts(container, list) {
-  if (!container) return;
+export function renderProducts(
+  container: HTMLElement | null,
+  list: readonly Product[]
+): void {
+  if (container === null) {
+    return;
+  }
 
-  if (!list || list.length === 0) {
+  if (list.length === 0) {
     container.innerHTML = `
       <div style="grid-column:1/-1;text-align:center;padding:64px 20px;background:#fff;border:1px solid #EFE9E2;border-radius:4px;">
         <p style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin:0 0 8px;color:#211B1D;">No Pieces Found</p>
@@ -54,52 +64,49 @@ export function renderProducts(container, list) {
 
 /**
  * Updates the catalog count badge.
- * @param {HTMLElement} badgeEl - Count badge element.
- * @param {number} count - Number of visible items.
  */
-export function renderCatalogCount(badgeEl, count) {
-  if (!badgeEl) return;
-  badgeEl.textContent = `${count} ${count === 1 ? "PIECE" : "PIECES"} AVAILABLE`;
+export function renderCatalogCount(badgeEl: HTMLElement | null, count: number): void {
+  if (badgeEl === null) {
+    return;
+  }
+  const label = count === 1 ? "PIECE" : "PIECES";
+  badgeEl.textContent = `${count} ${label} AVAILABLE`;
 }
 
 /**
  * Renders the cart drawer list, badge count, and subtotal.
- * Uses clean event delegation attributes for quantity and removal.
- * @param {Object} elements - UI elements map.
- * @param {Array} cart - Cart array [{ id, qty }].
- * @param {Array} products - Catalog products array.
- * @param {{ count: number, subtotal: number }} totals - Calculated totals.
  */
-export function renderCart(elements, cart, products, totals) {
+export function renderCart(
+  elements: CartUIElements,
+  cart: readonly CartItem[],
+  catalog: readonly Product[],
+  totals: CartTotals
+): void {
   const { badgeEl, listEl, subtotalEl } = elements;
 
-  // 1. Update header badge count
-  if (badgeEl) {
-    badgeEl.textContent = totals.count;
+  if (badgeEl !== null) {
+    badgeEl.textContent = String(totals.count);
   }
 
-  // 2. Update subtotal amount
-  if (subtotalEl) {
+  if (subtotalEl !== null) {
     subtotalEl.textContent = `$${totals.subtotal.toFixed(2)}`;
   }
 
-  // 3. Render items list
-  if (listEl) {
-    if (!cart || cart.length === 0) {
+  if (listEl !== null) {
+    if (cart.length === 0) {
       listEl.innerHTML = `
         <p class="cart-empty-msg">Your wardrobe bag is currently empty.<br />Select pieces from the collection to proceed.</p>
       `;
       return;
     }
 
-    listEl.innerHTML = cart
-      .map((item) => {
-        const product = products.find((p) => p.id === item.id);
-        if (!product) return "";
-        const itemQty = item.qty || 1;
+    const itemsHTML: string[] = [];
+    for (const item of cart) {
+      const product = catalog.find((p) => p.id === item.id);
+      if (product !== undefined) {
+        const itemQty = item.qty;
         const lineTotal = (product.price * itemQty).toFixed(2);
-
-        return `
+        itemsHTML.push(`
           <div class="cart-item-card" data-id="${item.id}">
             <img src="${product.image}" alt="${product.name}" class="cart-item-thumb" />
             <div class="cart-item-info">
@@ -113,19 +120,21 @@ export function renderCart(elements, cart, products, totals) {
             </div>
             <button type="button" class="cart-item-remove-btn" data-action="remove" data-id="${item.id}" aria-label="Remove item">&times;</button>
           </div>
-        `;
-      })
-      .join("");
+        `);
+      }
+    }
+
+    listEl.innerHTML = itemsHTML.join("");
   }
 }
 
 /**
  * Opens or closes the slide-over cart drawer.
- * @param {HTMLElement} backdrop - Backdrop container element.
- * @param {boolean} isOpen - Whether drawer is open.
  */
-export function toggleCartDrawer(backdrop, isOpen) {
-  if (!backdrop) return;
+export function toggleCartDrawer(backdrop: HTMLElement | null, isOpen: boolean): void {
+  if (backdrop === null) {
+    return;
+  }
   if (isOpen) {
     backdrop.classList.add("active");
     backdrop.setAttribute("aria-hidden", "false");
@@ -139,16 +148,19 @@ export function toggleCartDrawer(backdrop, isOpen) {
 
 /**
  * Provides temporary positive feedback on a button.
- * @param {HTMLElement} button - Target button.
- * @param {string} feedbackText - Temporary text.
- * @param {string} originalText - Reverted text.
- * @param {number} [duration=900] - Duration in ms.
  */
-export function flashButtonSuccess(button, feedbackText, originalText, duration = 900) {
-  if (!button) return;
+export function flashButtonSuccess(
+  button: HTMLElement | null,
+  feedbackText: string,
+  originalText: string,
+  duration = 900
+): void {
+  if (button === null) {
+    return;
+  }
   button.classList.add("success-flash");
   button.textContent = feedbackText;
-  setTimeout(() => {
+  window.setTimeout(() => {
     button.classList.remove("success-flash");
     button.textContent = originalText;
   }, duration);
@@ -156,23 +168,27 @@ export function flashButtonSuccess(button, feedbackText, originalText, duration 
 
 /**
  * Synchronizes active category CSS classes on filter buttons and circles.
- * @param {NodeList|Array} buttons - Filter buttons.
- * @param {NodeList|Array} circles - Circular category elements.
- * @param {string} activeCategory - Selected category.
  */
-export function updateActiveCategoryUI(buttons, circles, activeCategory) {
-  if (buttons) {
-    buttons.forEach((btn) => {
-      const match = (btn.dataset.category || "all").toLowerCase() === activeCategory.toLowerCase();
-      btn.classList.toggle("active", match);
-    });
+export function updateActiveCategoryUI(
+  buttons: Iterable<Element>,
+  circles: Iterable<Element>,
+  activeCategory: string
+): void {
+  const targetCategory = activeCategory.toLowerCase();
+
+  for (const btn of buttons) {
+    if (btn instanceof HTMLElement) {
+      const cat = btn.getAttribute("data-category");
+      const normalized = (cat !== null ? cat : "all").toLowerCase();
+      btn.classList.toggle("active", normalized === targetCategory);
+    }
   }
 
-  if (circles) {
-    circles.forEach((circle) => {
-      const match = (circle.dataset.category || "").toLowerCase() === activeCategory.toLowerCase();
-      circle.classList.toggle("active", match);
-    });
+  for (const circle of circles) {
+    if (circle instanceof HTMLElement) {
+      const cat = circle.getAttribute("data-category");
+      const normalized = (cat !== null ? cat : "").toLowerCase();
+      circle.classList.toggle("active", normalized === targetCategory);
+    }
   }
 }
-

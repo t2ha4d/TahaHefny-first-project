@@ -26,4 +26,3 @@
 - **Cause:** In `src/state.js`, `saveCart` attempted to write the cart array directly to `localStorage` without stringifying it (`localStorage.setItem(KEY, cart)`), which converted the array into the invalid string `"[object Object]"`. Upon page reload, `JSON.parse` crashed on this string. Furthermore, `addToCart` used `.push(item)` directly without checking if an item with that `id` already existed to increment its `qty`.
 - **Fix:** Serialized data properly using `JSON.stringify(cart)` in `saveCart()`. Wrapped `loadCart()` in a `try...catch` block to handle corrupt data gracefully by resetting to `[]`. Refactored `addToCart()` to check if the product ID is already in the cart: if found, cleanly increment its `qty`; if not, append `{ id, qty: 1 }`.
 - **Did I use AI? For what?** No. Discovered by verifying the serialized storage value in the Application tab and monitoring cart state changes across page reloads.
-

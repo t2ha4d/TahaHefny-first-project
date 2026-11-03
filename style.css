@@ -7,29 +7,29 @@
    ========================================================================== */
 
 :root {
-  --bg-cream: #FAF7F2;
-  --bg-sand: #F4EFEA;
-  --bg-surface: #FFFFFF;
-  --bg-wine: #4E1522;
-  --bg-wine-hover: #3C0F1A;
-  --bg-dark-footer: #1A0E12;
+  --bg-cream: #faf7f2;
+  --bg-sand: #f4efea;
+  --bg-surface: #ffffff;
+  --bg-wine: #4e1522;
+  --bg-wine-hover: #3c0f1a;
+  --bg-dark-footer: #1a0e12;
 
-  --text-dark: #211B1D;
-  --text-secondary: #63575A;
-  --text-muted: #8F8386;
-  --text-white: #FFFFFF;
-  --text-wine: #4E1522;
-  --text-camel: #A36B3D;
+  --text-dark: #211b1d;
+  --text-secondary: #63575a;
+  --text-muted: #8f8386;
+  --text-white: #ffffff;
+  --text-wine: #4e1522;
+  --text-camel: #a36b3d;
 
   --border-subtle: rgba(33, 27, 29, 0.08);
-  --border-light: #EFE9E2;
-  --border-wine: #4E1522;
+  --border-light: #efe9e2;
+  --border-wine: #4e1522;
 
-  --accent-camel: #B37D4E;
-  --accent-wine: #4E1522;
-  --accent-cream: #F5EFEB;
-  --accent-olive: #4D533C;
-  --accent-espresso: #33231E;
+  --accent-camel: #b37d4e;
+  --accent-wine: #4e1522;
+  --accent-cream: #f5efeb;
+  --accent-olive: #4d533c;
+  --accent-espresso: #33231e;
 
   --font-serif: "Cormorant Garamond", Garamond, Georgia, serif;
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
@@ -104,8 +104,8 @@ select {
    1. ANNOUNCEMENT TOP STRIP
    ========================================================================== */
 .announcement-bar {
-  background-color: #1A0E12;
-  color: #FFFFFF;
+  background-color: #1a0e12;
+  color: #ffffff;
   text-align: center;
   padding: 8px 16px;
   font-size: 0.68rem;
@@ -223,7 +223,7 @@ select {
   padding: 0 4px;
   border-radius: 9999px;
   background-color: var(--accent-wine);
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 0.68rem;
   font-weight: 700;
 }
@@ -233,7 +233,7 @@ select {
    ========================================================================== */
 .hero-stage {
   position: relative;
-  background-color: #2E2320;
+  background-color: #2e2320;
   min-height: 560px;
   display: flex;
   align-items: center;
@@ -272,14 +272,14 @@ select {
 
 .hero-text-col {
   max-width: 520px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .hero-eyebrow {
   font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #E2D3CA;
+  color: #e2d3ca;
   font-weight: 600;
   margin-bottom: 12px;
   display: inline-block;
@@ -292,13 +292,13 @@ select {
   font-weight: 500;
   letter-spacing: -0.01em;
   margin: 0 0 16px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .hero-subline {
   font-size: 1rem;
   line-height: 1.6;
-  color: #EADCD3;
+  color: #eadcd3;
   margin: 0 0 28px;
   font-weight: 300;
 }
@@ -309,7 +309,7 @@ select {
   justify-content: center;
   padding: 13px 28px;
   background-color: var(--accent-wine);
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 0.74rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -320,7 +320,7 @@ select {
 }
 
 .hero-cta-btn:hover {
-  background-color: #380C17;
+  background-color: #380c17;
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
@@ -451,7 +451,7 @@ select {
 }
 
 .look-card {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: 4px;
   overflow: hidden;
@@ -527,7 +527,7 @@ select {
 }
 
 .bento-card {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: 4px;
   padding: 32px 28px;
@@ -659,7 +659,7 @@ select {
 
 /* Styling guide card */
 .styling-guide-card {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: 4px;
   overflow: hidden;
@@ -700,12 +700,12 @@ select {
 
 .guide-pill-btn:hover {
   background-color: var(--text-dark);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /* Customer gallery */
 .customer-gallery-card {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: 4px;
   padding: 32px 28px;
@@ -783,7 +783,7 @@ select {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: 4px;
   padding: 16px 20px;
@@ -817,7 +817,7 @@ select {
 
 .search-field-input:focus {
   outline: none;
-  background: #FFFFFF;
+  background: #ffffff;
   border-color: var(--accent-wine);
 }
 
@@ -842,14 +842,14 @@ select {
 }
 
 .cat-filter-btn:hover {
-  background: #FFFFFF;
+  background: #ffffff;
   color: var(--text-dark);
   border-color: var(--border-light);
 }
 
 .cat-filter-btn.active {
   background: var(--accent-wine);
-  color: #FFFFFF;
+  color: #ffffff;
   border-color: var(--accent-wine);
 }
 
@@ -887,7 +887,7 @@ select {
 }
 
 .apparel-card {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: 4px;
   overflow: hidden;
@@ -939,7 +939,9 @@ select {
   border: 1px solid var(--border-subtle);
   opacity: 0;
   transform: translateY(-4px);
-  transition: opacity 0.28s ease, transform 0.28s ease;
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
   pointer-events: none;
 }
 
@@ -965,8 +967,8 @@ select {
 .wishlist-heart-btn.active {
   opacity: 1;
   transform: translateY(0);
-  color: #E11D48;
-  background-color: #FFF1F2;
+  color: #e11d48;
+  background-color: #fff1f2;
 }
 
 /* On Hover: Badges and Wishlist Button Appear Smoothly */
@@ -977,13 +979,13 @@ select {
 }
 
 .wishlist-heart-btn:hover {
-  color: #E11D48;
+  color: #e11d48;
   transform: scale(1.1);
 }
 
 .wishlist-heart-btn.active svg {
-  fill: #E11D48;
-  stroke: #E11D48;
+  fill: #e11d48;
+  stroke: #e11d48;
 }
 
 .apparel-body-info {
@@ -1025,7 +1027,7 @@ select {
 .apparel-add-btn {
   padding: 7px 16px;
   background-color: var(--text-dark);
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -1039,15 +1041,15 @@ select {
 }
 
 .apparel-add-btn.success-flash {
-  background-color: #2E7D32;
+  background-color: #2e7d32;
 }
 
 /* ==========================================================================
    9. NEWSLETTER STRIP (Burgundy Bar from Reference)
    ========================================================================== */
 .newsletter-bar-section {
-  background-color: #3C121B;
-  color: #FFFFFF;
+  background-color: #3c121b;
+  color: #ffffff;
   padding: 36px 24px;
 }
 
@@ -1070,7 +1072,7 @@ select {
 .newsletter-prompt-icon {
   width: 28px;
   height: 28px;
-  color: #E2D3CA;
+  color: #e2d3ca;
 }
 
 .newsletter-prompt-title {
@@ -1079,12 +1081,12 @@ select {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   margin: 0 0 4px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .newsletter-prompt-sub {
   font-size: 0.82rem;
-  color: #EADCD3;
+  color: #eadcd3;
   margin: 0;
 }
 
@@ -1100,13 +1102,13 @@ select {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-right: none;
   padding: 10px 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 0.82rem;
   border-radius: 2px 0 0 2px;
 }
 
 .newsletter-email-field::placeholder {
-  color: #D6C2B8;
+  color: #d6c2b8;
 }
 
 .newsletter-email-field:focus {
@@ -1115,8 +1117,8 @@ select {
 }
 
 .newsletter-submit-btn {
-  background: #FFFFFF;
-  color: #3C121B;
+  background: #ffffff;
+  color: #3c121b;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -1127,7 +1129,7 @@ select {
 }
 
 .newsletter-submit-btn:hover {
-  background: #F4EFEA;
+  background: #f4efea;
 }
 
 /* ==========================================================================
@@ -1135,7 +1137,7 @@ select {
    ========================================================================== */
 .site-footer {
   background-color: var(--bg-dark-footer);
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 64px 24px 36px;
 }
 
@@ -1153,12 +1155,12 @@ select {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   margin: 0 0 14px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .footer-brand-desc {
   font-size: 0.85rem;
-  color: #C4B5B9;
+  color: #c4b5b9;
   line-height: 1.6;
   max-width: 280px;
   margin: 0 0 20px;
@@ -1170,12 +1172,12 @@ select {
 }
 
 .social-icon-link {
-  color: #C4B5B9;
+  color: #c4b5b9;
   transition: color 0.2s;
 }
 
 .social-icon-link:hover {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .footer-col-headline {
@@ -1183,7 +1185,7 @@ select {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 0 0 16px;
 }
 
@@ -1198,12 +1200,12 @@ select {
 
 .footer-nav-list a {
   font-size: 0.82rem;
-  color: #C4B5B9;
+  color: #c4b5b9;
   transition: color 0.2s;
 }
 
 .footer-nav-list a:hover {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .footer-bottom-bar {
@@ -1217,7 +1219,7 @@ select {
   justify-content: space-between;
   gap: 14px;
   font-size: 0.74rem;
-  color: #8F8386;
+  color: #8f8386;
 }
 
 .footer-legal-links {
@@ -1226,7 +1228,7 @@ select {
 }
 
 .footer-legal-links a:hover {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /* ==========================================================================
@@ -1255,7 +1257,7 @@ select {
   bottom: 0;
   width: 100%;
   max-width: 420px;
-  background: #FFFFFF;
+  background: #ffffff;
   z-index: 101;
   transform: translateX(100%);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1355,7 +1357,7 @@ select {
 }
 
 .cart-item-remove-btn:hover {
-  color: #E11D48;
+  color: #e11d48;
 }
 
 .cart-drawer-footer {
@@ -1383,7 +1385,7 @@ select {
   width: 100%;
   padding: 13px;
   background-color: var(--accent-wine);
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -1393,7 +1395,7 @@ select {
 }
 
 .btn-drawer-checkout:hover {
-  background-color: #380C17;
+  background-color: #380c17;
 }
 
 /* ==========================================================================
